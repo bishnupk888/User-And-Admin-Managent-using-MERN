@@ -58,7 +58,6 @@ const UsersDataTable = ({ users }) => {
       setUserIdToUpdate(null); // Clear the user ID to update
       setShowUpdateModal(false); // Close the update modal
 
-      // Reload the page to reflect the updated data
       window.location.reload();
       
     } catch (err) {
