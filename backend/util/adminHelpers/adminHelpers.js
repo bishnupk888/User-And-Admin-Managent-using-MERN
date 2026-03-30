@@ -5,7 +5,7 @@ const fetchUser = async()=>{
         const users = await User.find({},{name:1,email:1})
         return users
     } catch (error) {
-        throw new Error("error fetching user", error)
+        throw new Error("error fetching user: " + error.message)
     }
 }
 
@@ -19,7 +19,7 @@ const deleteUser  = async(userId)=>{
         return {success : true, message: "successfully deleted user:"}
     }
 }catch(error){
-    throw new Error("Error deleting user",error)
+    throw new Error("Error deleting user: " + error.message)
 }
 }
 
@@ -36,7 +36,7 @@ const updateUser = async (userData)=>{
         return {success: true, message : "user updated successfully"}
     } catch (error) {
 
-        throw new Error("Failed updating user",error)
+        throw new Error("Failed updating user: " + error.message)
         
     }
 }

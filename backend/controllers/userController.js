@@ -1,6 +1,7 @@
 import AsyncHandler from "express-async-handler"
  import User from "../models/userModel.js"
  import generateToken from "../util/generateToken.js"
+ import bcrypt from 'bcryptjs'
 
 //auth user
 const authUser = AsyncHandler(async(req,res)=>{
@@ -90,8 +91,7 @@ const updateUser = AsyncHandler(async(req,res)=>{
         
         // Check if password is provided in request body
         if (req.body.password) {
-            const salt = await bcrypt.genSalt(10);
-            user.password = await bcrypt.hash(req.body.password, salt);
+            user.password = req.body.password;
         }
 
         // Check if file is uploaded and update profile picture

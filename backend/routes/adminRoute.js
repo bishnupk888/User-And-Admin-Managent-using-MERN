@@ -43,7 +43,7 @@ router.get('/get-users', authenticateAdmin, getAllUsers);
 
 router.post('/delete-user', authenticateAdmin, deleteUserData);
 
-router.put('/update-user', updateUserData);
+router.put('/update-user', authenticateAdmin, updateUserData);
 
 
 

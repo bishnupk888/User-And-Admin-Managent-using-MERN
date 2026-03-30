@@ -2,39 +2,22 @@ import UsersDataTable from "../../components/adminComponents/UserDataTable";
 import { useEffect,useState } from "react"
 import { toast } from "react-toastify";
 
-import { useGetUsersDataMutation } from "../../slices/adminApiSlice";
+import { useGetUsersDataQuery } from "../../slices/adminApiSlice";
 
 import LoaderComponent from "../../components/LoaderComponent.jsx";
 
 
 const AdminHomeScreen = () => {
 
-  const [usersData, setUsersData] = useState([]);
-
-  const [usersDataFromAPI, { isLoading } ] = useGetUsersDataMutation();
+  const { data, isLoading, error } = useGetUsersDataQuery();
 
   useEffect(() => {
-    
-    try {
-
-      const fetchData = async () => {
-
-        const responseFromApiCall = await usersDataFromAPI();
-        const usersArray = responseFromApiCall.data.usersData;
-  
-        setUsersData(usersArray);
-
-      };
-  
-      fetchData();
-
-    } catch (error) {
-
-      toast.error(error);
-
+    if (error) {
+      toast.error(error?.data?.message || error.error);
     }
+  }, [error]);
 
-  },[]);
+  const usersData = data?.usersData || [];
 
   return (
     <div>

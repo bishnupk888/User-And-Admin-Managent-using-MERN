@@ -119,7 +119,7 @@ const updateAdminProfile = asyncHandler ( async (req, res) => {
     */
 
     // Find the user data with user id in the request object
-    const admin = await AdminModel.findById(req.user._id);
+    const admin = await Admin.findById(req.user._id);
 
     if (admin) {
     

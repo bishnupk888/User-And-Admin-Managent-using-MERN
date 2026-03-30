@@ -24,7 +24,7 @@ const adminSchema = mongoose.Schema({
 adminSchema.pre('save', async function(next){
     if( !this.isModified('password') ) {
 
-        next();
+        return next();
         // in that case rehashing password will be skipped
     }
 

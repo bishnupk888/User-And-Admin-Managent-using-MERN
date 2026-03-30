@@ -42,7 +42,7 @@ export const adminApiSlice = apiSlice.injectEndpoints({
             })
 
         }),
-        getUsersData: builder.mutation({
+        getUsersData: builder.query({
             
             query: () => ({
                 url: `${ADMIN_URL}/get-users`,
@@ -80,7 +80,7 @@ export const {
     useAdminLogoutMutation,
     useAdminRegisterMutation,
     useUpdateAdminMutation,
-    useGetUsersDataMutation,
+    useGetUsersDataQuery,
     useDeleteUserMutation,
     useUpdateUserByAdminMutation
 
